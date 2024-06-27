@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "outDir": "./dist/out-tsc",
+    "strict": true,
+    "esModuleInterop": true,
+    "module": "es2022",
+    "target": "es2022",
+    "moduleResolution": "node",
+    "declaration": false,
+    "sourceMap": true,
+    "lib": ["es2022", "dom"]
+  },
+  "angularCompilerOptions": {
+    "strictTemplates": true,
+    "enableIvy": true
+  },
+  "include": ["src/**/*.ts"]
+}
