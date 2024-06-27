@@ -8,11 +8,11 @@ services:
     ports:
       - "4200:80"
     depends_on:
-      - user-management
+      - user-management-api
 
-  user-management:
+  user-management-api:
     build:
-      context: ./user-management
+      context: ./user-management-api
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
@@ -22,18 +22,6 @@ services:
       DATABASE_PASSWORD: root
     depends_on:
       - mysql-standalone
-      - mail-service
-
-  mail-service:
-    build:
-      context: ./mail-service
-      dockerfile: Dockerfile
-    ports:
-      - "8081:8081"
-    environment:
-      MAILJET_API_KEY: a943af4bacad179400592144c88eb656
-      MAILJET_SECRET_KEY: 9edbb25131a35ce977566bdf643651bd
-      MAILJET_SENDER_EMAIL: jamesyuyanen@gmail.com
 
   mysql-standalone:
     image: mysql:latest
