@@ -22,15 +22,18 @@ services:
       DATABASE_PASSWORD: root
     depends_on:
       - mysql-standalone
-      - mail-service
+      - email-service
 
-  mail-service:
+  email-service:
     build:
-      context: ./mail-service
+      context: ./email-service
       dockerfile: Dockerfile
     ports:
       - "8081:8081"
     environment:
+      DATABASE_URL: jdbc:mysql://mysql-standalone:3306/users
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: root
       MAILJET_API_KEY: a943af4bacad179400592144c88eb656
       MAILJET_SECRET_KEY: 9edbb25131a35ce977566bdf643651bd
       MAILJET_SENDER_EMAIL: jamesyuyanen@gmail.com

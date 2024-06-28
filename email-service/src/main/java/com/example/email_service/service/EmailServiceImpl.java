@@ -2,6 +2,8 @@ package com.example.email_service.service;
 
 
 
+import com.mailjet.client.errors.MailjetException;
+import com.mailjet.client.errors.MailjetSocketTimeoutException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -9,24 +11,22 @@ import org.springframework.stereotype.Service;
 
 import com.mailjet.client.MailjetClient;
 import com.mailjet.client.MailjetRequest;
-import com.mailjet.client.errors.MailjetException;
-import com.mailjet.client.errors.MailjetSocketTimeoutException;
 import com.mailjet.client.resource.Email;
 
 import org.springframework.beans.factory.annotation.Value;
 
 
 @Service
-public class EmailServiceImpl implements com.example.email_service.service.EmailService {
+public class EmailServiceImpl implements EmailService {
 
-    @Value("${mailjet.api.key}")
-    private String mailjetApiKey;
+        @Value("${mailjet.api.key}")
+        private String mailjetApiKey;
 
-    @Value("${mailjet.secret.key}")
-    private String mailjetSecretKey;
+        @Value("${mailjet.sender.email}")
+        private String senderEmail;
 
-    @Value("${mailjet.sender.email}")
-    private String senderEmail;
+        @Value("${mailjet.secret.key}")
+        private String mailjetSecretKey;
 
     @Override
     public void sendWelcomeEmail(String toEmail) throws MailjetException, MailjetSocketTimeoutException {
@@ -41,5 +41,5 @@ public class EmailServiceImpl implements com.example.email_service.service.Email
 
         client.post(request);
         System.out.println("Email sent successfully to " + toEmail);
+      }
     }
-}
