@@ -9,6 +9,8 @@ services:
       - "4200:80"
     depends_on:
       - user-management
+    networks:
+      - app-network
 
   user-management:
     build:
@@ -20,9 +22,12 @@ services:
       DATABASE_URL: jdbc:mysql://mysql-standalone:3306/users
       DATABASE_USERNAME: root
       DATABASE_PASSWORD: root
+      EMAIL_SERVICE_URL: http://email-service:8081
     depends_on:
       - mysql-standalone
       - email-service
+    networks:
+      - app-network
 
   email-service:
     build:
@@ -37,6 +42,8 @@ services:
       MAILJET_API_KEY: a943af4bacad179400592144c88eb656
       MAILJET_SECRET_KEY: 9edbb25131a35ce977566bdf643651bd
       MAILJET_SENDER_EMAIL: jamesyuyanen@gmail.com
+    networks:
+      - app-network
 
   mysql-standalone:
     image: mysql:latest
@@ -48,6 +55,12 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
       - ./mysql-connector-java:/usr/share/java/mysql-connector-java
+    networks:
+      - app-network
 
 volumes:
   mysql_data:
+
+networks:
+  app-network:
+    driver: bridge

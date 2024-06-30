@@ -37,11 +37,13 @@ public class UserController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+
     @PostMapping("/register")
     public ResponseEntity<User> createUser(@Valid @RequestBody User user) throws MessagingException, IOException, MailjetSocketTimeoutException, MailjetException {
         User createdUser = userService.createUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable("id") Long id, @Valid @RequestBody User user) {
@@ -53,6 +55,7 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable("id") Long id) {
         if (!userService.getUserById(id).isPresent()) {
@@ -62,11 +65,13 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
+
     @PutMapping("/{id}/deactivate")
     public ResponseEntity<User> deactivateUser(@PathVariable("id") Long id) {
         User deactivatedUser = userService.deactivateUser(id);
         return ResponseEntity.ok(deactivatedUser);
     }
+
 
     @PutMapping("/{id}/activate")
     public ResponseEntity<User> activateUser(@PathVariable("id") Long id) {

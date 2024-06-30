@@ -67,6 +67,13 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.6.9</version> <!-- 使用最新版本 -->
+		</dependency>
+
+
+		<dependency>
 			<groupId>com.mailjet</groupId>
 			<artifactId>mailjet-client</artifactId>
 			<version>4.2.1</version> <!-- Check for the latest version -->
@@ -84,6 +91,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
 
 	</dependencies>
 

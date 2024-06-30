@@ -35,10 +35,10 @@ public class UserServiceImpl implements UserService{
     }
 
     @Autowired
-    private RestTemplate restTemplate; // Or use WebClient
+    private RestTemplate restTemplate;
 
     // REST API endpoint
-    private static final String EMAIL_SERVICE_URL = "http://localhost:8081/api/sendWelcomeEmail"; // Assuming email-service runs on localhost:8081
+    private static final String EMAIL_SERVICE_URL = "http://email-service:8081/api/users/sendWelcomeEmail"; // Assuming email-service runs on localhost:8081
 
 
     @Override
@@ -55,9 +55,7 @@ public class UserServiceImpl implements UserService{
         HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(requestBody, headers);
 
         // Send POST request to the email service
-        ResponseEntity<Void> responseEntity = restTemplate.postForEntity(EMAIL_SERVICE_URL, requestEntity, Void.class);
-
-        // Check the response status code and handle success or failure as needed
+        restTemplate.postForEntity(EMAIL_SERVICE_URL, requestEntity, Void.class);
 
         return savedUser; // Return the saved user object
     }
