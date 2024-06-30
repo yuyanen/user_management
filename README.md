@@ -32,6 +32,11 @@ You should see the User Management application home page.
 Notes:
 If the application encounters issues or stops unexpectedly, use the following commands:
 docker-compose down
+
+This command will stop docker
+
 docker-compose up -d
-This will stop and remove the running containers and then restart them.
+
+This command will restart docker
+
 Ensure ports 4200 and 8080 are not used by other services on your machine to avoid conflicts.
