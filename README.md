@@ -11,6 +11,7 @@ cd PCCW
 2.Build and Deploy Application
 
 Execute the deployment script run.sh using Git Bash in folder PCCW
+
 bash run.sh
 
 This script will:
