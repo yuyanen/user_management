@@ -29,6 +29,14 @@ http://localhost:4200
 You should see the User Management application home page.
 
 
+4.API Documentation
+
+open your web browser and navigate to:
+
+http://localhost:8080/swagger-ui.html
+
+
+
 Notes:
 If the application encounters issues or stops unexpectedly, use the following commands:
 docker-compose down
