@@ -5,7 +5,7 @@ Git
 Getting Started
 
 1.Clone the Repository
-git clone https://github.com/yuyanen/PCCW.git
+git clone https://github.com/yuyanen/user_management.git
 cd PCCW
 
 2.Build and Deploy Application
